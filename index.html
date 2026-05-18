@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ET AI Edge - Landing Page (Annotated)</title>
+  <meta name="description" content="ET AI Edge is a monthly AI briefing for ambitious Indian professionals. 20 minutes, once a month. ET editorial deep-dive + 3-slide output for your next leadership meeting." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'et-red': '#E02020',
+            'et-red-dark': '#B81818',
+            'et-red-light': '#FFF0F0',
+            'ann-bg': '#FFFBEB',
+            'ann-border': '#F59E0B',
+            'ann-text': '#92400E',
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Times New Roman', 'serif'],
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .hero-bg {
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.6) 100%),
+        url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center top;
+    }
+    .section-divider { border-top: 2px solid #E02020; width: 48px; }
+    .proof-card { border-left: 3px solid #E02020; }
+    .faq-item summary { cursor: pointer; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item[open] summary .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+    .sticky-bar { backdrop-filter: blur(8px); }
+
+    /* Annotation panel */
+    .ann {
+      background: #FFFBEB;
+      border-left: 4px solid #F59E0B;
+      font-family: 'Inter', sans-serif;
+    }
+    .ann-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #B45309;
+    }
+    .ann-heading {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: #78350F;
+      font-size: 13px;
+    }
+    .ann-body {
+      font-family: 'Inter', sans-serif;
+      color: #92400E;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .ann-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .ann-grid { grid-template-columns: 1fr; }
+    }
+    .ann-cell {
+      border-left: 2px solid #FCD34D;
+      padding-left: 10px;
+    }
+    .ann-cell-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B45309;
+      margin-bottom: 4px;
+    }
+    .ann-cell-body {
+      font-size: 12px;
+      color: #92400E;
+      line-height: 1.55;
+    }
+    /* Print / hide annotations toggle */
+    .ann-toggle-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: #1F2937;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    body.hide-annotations .ann { display: none; }
+
+    /* Feature row animations */
+    .anim-item {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .feature-row.visible .anim-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .feature-row.visible .anim-item:nth-child(2) { transition-delay: 0.12s; }
+    .feature-row.visible .anim-item:nth-child(3) { transition-delay: 0.24s; }
+    .feature-row.visible .anim-item:nth-child(4) { transition-delay: 0.36s; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Toggle button -->
+  <button class="ann-toggle-btn" onclick="document.body.classList.toggle('hide-annotations'); this.textContent = document.body.classList.contains('hide-annotations') ? 'Show annotations' : 'Hide annotations'">
+    Hide annotations
+  </button>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - TOP BAR + NAV
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Top Bar &amp; Navigation</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Top bar delivers the single most important urgency signal: the review cycle has a fixed start date. Nav persists on scroll - every section gets a buy CTA in the thumb zone without interrupting reading.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether cycle-timing urgency ("your Scorecard baseline starts Month 1") generates earlier CTA clicks vs. no top-bar urgency. Tracked by: nav CTA click-share before vs. after scroll depth 50%.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Recovery mechanism - captures visitors who've decided but haven't scrolled to pricing yet. "Join - ₹9,999/yr" in nav is not a new offer; it's a shortcut for the already-convinced visitor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOP BAR ─── -->
+  <div class="bg-et-red text-white text-xs py-1.5 text-center tracking-wide font-medium">
+    The next Monthly AI Briefing cycle opens June 2026
+  </div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 sticky-bar">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-et-red font-bold text-xl tracking-tight font-serif">ET</span>
+        <div class="w-px h-5 bg-gray-200"></div>
+        <span class="text-gray-900 text-sm font-semibold tracking-wide">AI EDGE</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a href="#product" class="hover:text-et-red transition-colors">How it works</a>
+        <a href="#proof" class="hover:text-et-red transition-colors">Who uses it</a>
+        <a href="#pricing" class="hover:text-et-red transition-colors">Pricing</a>
+      </div>
+      <a href="#pricing" class="bg-et-red text-white text-sm font-semibold px-4 py-2 rounded hover:bg-et-red-dark transition-colors">
+        Join - ₹9,999/yr
+      </a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 1: HERO (ABOVE THE FOLD)
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-5">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-3">Annotation - Section 1: Hero (Above the Fold) · Most Critical Panel</p>
+
+      <!-- Extended annotation for hero -->
+      <div class="mb-4">
+        <p class="ann-heading mb-1">What this panel must do in 3 seconds</p>
+        <p class="ann-body max-w-3xl">Filter out the wrong visitor and arrest the right one. Variant A headline ("Lead AI at work. Before someone else does.") frames the competitive urgency — this is about being first, not being informed. Variant B headline ("You're ahead on AI. Your leadership hasn't noticed.") names the visibility gap for Career Accelerators — doing the work but not getting credit. Both subheadlines make the product concrete: what it is, who the intelligence comes from (ET's Global Business Summit and AI Awards leaders), and what you walk away with. Price appears immediately so the visitor self-selects before investing attention in the rest of the page.</p>
+      </div>
+
+      <div class="ann-grid mb-4">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">
+            <strong>Variant A headline:</strong> "Lead AI at work. Before someone else does." — competitive urgency without naming a competitor. Targets Org Leaders (38–55) who fear losing the AI narrative in their team.<br/><br/>
+            <strong>Variant B headline:</strong> "You're ahead on AI. Your leadership hasn't noticed." — visibility gap framing. Targets Career Accelerators (28–38) who are doing real AI work but not being seen for it.<br/><br/>
+            <strong>Variant A subheadline:</strong> Names the intelligence source ("ET's Global Business Summit and AI Awards leaders") to establish access credibility, then describes the output (action plan + ready-to-present output).<br/><br/>
+            <strong>Variant B subheadline:</strong> Focuses on the visibility outcome ("so your AI work is visible, not just real") — purchase trigger is recognition, not learning.<br/><br/>
+            <strong>Price:</strong> ₹9,999/year shown above fold. Signals confidence, filters low-intent visitors, anchors the rest of the page. Per-month equivalent (₹833) gives executives a budget frame they think in.
+          </div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing (A/B)</div>
+          <div class="ann-cell-body">
+            <strong>Variant A (default):</strong> Headline "Lead AI at work. Before someone else does." + CTA "Own My Organisation's AI Direction." Hypothesis: competitive + control framing converts Org Leaders (38–55) better. Predicts +12–18% CTR on that segment.<br/><br/>
+            <strong>Variant B (?v=b):</strong> Headline "You're ahead on AI. Your leadership hasn't noticed." + CTA "Start My Monthly Briefing." Hypothesis: visibility gap framing converts Career Accelerators (28–38) better. Predicts +15–20% CTR on that segment.<br/><br/>
+            <strong>Primary metric:</strong> Hero CTA CTR. Kill threshold: &lt;2.5% after 2,000 unique mobile sessions.<br/><br/>
+            <strong>Secondary metric:</strong> Scroll depth Hero→Section 2. If scroll rate is high but CTA CTR is low, copy is interesting but not converting - problem is in the CTA, not the headline.
+          </div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">
+            <strong>Primary:</strong> First purchase opportunity - a fast-moving visitor who reads headline + price + trust row and buys without scrolling further. This visitor exists; the page must not block them.<br/><br/>
+            <strong>Secondary:</strong> Scroll commitment - visitor who needs more before purchasing but is now invested enough to continue. The hero earns this by being specific (20 minutes, 3-slide output) rather than vague ("AI-powered insights").<br/><br/>
+            <strong>Intentionally excluded:</strong> Feature list (explains, doesn't lead), testimonials (institutional trust signals only at this stage), social proof numbers (Year-1, small numbers reduce trust), urgency countdown (destroys trust with this audience).
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-yellow-200 pt-3 mt-2">
+        <p class="ann-body"><strong>Design note - imagery:</strong> Hero photo shows professionals in an executive meeting context - not a "person at laptop with AI interface" stock cliché. The dark gradient overlay keeps text readable while the image does emotional work: this is the room these people want to lead.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 - HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero-bg flex flex-col justify-center py-20 px-5 sm:px-8" id="hero">
+    <div class="max-w-3xl mx-auto w-full">
+
+      <!-- Variant A - Organisational Leaders (default) -->
+      <div id="hero-a">
+        <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">
+          Lead AI at work.<br/>Before someone else does.
+        </h1>
+        <p class="text-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+          ET AI Edge distills how India's top executives are using AI and gives you an action plan to apply it to your work, with a ready-to-present output for your next leadership meeting.
+        </p>
+      </div>
+
+      <!-- Variant B - Career Accelerators (hidden by default) -->
+      <div id="hero-b" class="hidden">
+        <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">
+          You're ahead on AI.<br/>Your leadership hasn't noticed.
+        </h1>
+        <p class="text-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+          ET AI Edge gives ambitious professionals a monthly AI briefing - with a ready-to-present output for your next leadership conversation, so your AI work is visible, not just real.
+        </p>
+      </div>
+
+      <!-- Price + CTA -->
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <a href="#pricing" class="bg-et-red hover:bg-et-red-dark text-white font-bold text-base px-8 py-4 rounded transition-colors inline-block" id="hero-cta-a">
+          Own My Organisation's AI Direction
+        </a>
+        <a href="#pricing" class="bg-et-red hover:bg-et-red-dark text-white font-bold text-base px-8 py-4 rounded transition-colors hidden" id="hero-cta-b">
+          Start My Monthly Briefing
+        </a>
+        <div class="text-white">
+          <span class="text-2xl font-bold">₹9,999<span class="text-base font-normal">/year</span></span>
+          <span class="text-white/60 text-sm ml-2">- ₹833/month, billed once</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 2: THE PROBLEM
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 2: The Problem</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Names the precise situation the visitor is living - ChatGPT workshops, scattered pilots, no one accountable - without labelling it as their failure. Ends with a reframe: this is a structural gap, not a personal one. Creates recognition without defensiveness. No CTA here - the section must earn trust, not sell.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether naming the gap concretely (pilot chaos → no ownership) produces stronger scroll pull than a general "AI is changing everything" framing. Metric: Section 2→3 scroll-through rate. Drop-off above 45% means the problem framing is too familiar or too broad - rewrite with more operational specificity.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Build recognition trust. A product that can describe your problem accurately is one that understands your world. This section does not try to convert - it earns the right for Section 3 to introduce the product. Max 5 lines on mobile: must end without resolution so discomfort carries the visitor forward.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 - THE PROBLEM
+  ═══════════════════════════════════════════ -->
+  <section class="bg-white py-16 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="w-12 border-t-2 border-et-red mx-auto mb-8"></div>
+      <p class="text-gray-900 text-2xl sm:text-3xl font-bold leading-snug">That gap - between "we're doing AI things" and "we're running AI" - is where careers and teams diverge.</p>
+    </div>
+  </section>
+
+<!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 3: WHAT ET AI EDGE IS
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 3: What ET AI Edge Is</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Makes the product concrete through three animated examples - a real deployment (VP Finance, FMCG, board prep from 3 days to 4 hours), a workflow scenario (campaign performance report, 3 hours to 35 minutes, 30-day commitment), and a populated slide preview (Marketing AI Month 3, peer benchmark, next action). The Scorecard callout below introduces the compounding switching cost via progress bars - after 3 quarters, the visitor's AI history lives here and nowhere else.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether explaining the ritual (3 outputs, 20 minutes) increases or decreases conversion. Hypothesis: specificity converts. Kill signal: Section 3→5 scroll-through drops while time-on-section rises - visitor is reading but not buying. Means the description is satisfying curiosity without creating purchase intent → restructure around the output, not the process.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Specificity trust. A product that describes a 3-slide template, a 20-minute structure, a quarterly Scorecard - was designed by someone who has been in those meetings. Micro-CTA here does a different job: "See what this looks like in practice" is a scroll deepener, not a purchase push. Moves committed visitors to Section 5 (proof) faster.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 - WHAT ET AI EDGE IS
+  ═══════════════════════════════════════════ -->
+  <section class="bg-gray-50 py-20 px-5 sm:px-8" id="product">
+    <div class="max-w-5xl mx-auto">
+      <div class="section-divider mb-6"></div>
+      <p class="text-et-red text-xs uppercase tracking-widest font-semibold mb-3">The product</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Most AI products give you information. ET AI Edge gives you a plan.</h2>
+      <p class="text-gray-500 text-base mb-12">ET AI Edge combines intelligence from India's senior business leaders with a structured workflow built for your role - so you don't just know what's happening with AI, you know what to do about it.</p>
+
+      <div class="space-y-8 mb-12">
+
+        <!-- Row 1: Intelligence -->
+        <div class="feature-row grid sm:grid-cols-2 gap-6 items-center">
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">What someone in your position is doing with AI right now</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Each month covers a real AI deployment from an Indian business leader - Finance, Marketing, HR, or Legal. So you always know where others are, and where you stand.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 flex flex-col gap-3 min-h-52 border border-gray-100 shadow-sm">
+            <div class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">This month's deployment</div>
+            <div class="anim-item bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">VP</div>
+                <div>
+                  <div class="text-sm font-semibold text-gray-900">VP Finance Planning</div>
+                  <div class="text-xs text-gray-400">FMCG company, 4,000 employees</div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-700 leading-relaxed">"Board materials prep: 3 days to 4 hours."</p>
+              <div class="mt-2 text-xs text-gray-400">FP&A variance analysis workflow &middot; 3 months in</div>
+            </div>
+            <div class="anim-item bg-blue-50 rounded-xl px-4 py-3 border border-blue-100">
+              <p class="text-xs text-blue-700 leading-relaxed">41% of Finance professionals at your level have at least one AI workflow in their planning cycle.</p>
+              <div class="text-xs text-blue-400 mt-1">India AI Benchmark &middot; May 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Action plan -->
+        <div class="feature-row grid sm:grid-cols-2 gap-6 items-center">
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Turn what you learned into something you can act on</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Each briefing includes a structured workflow tied to a real task in your role - so the intelligence from India's top leaders doesn't stay interesting, it becomes something you can run with immediately.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 flex flex-col gap-3 min-h-52 border border-gray-100 shadow-sm">
+            <div class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">This month's workflow</div>
+            <div class="anim-item bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <div class="text-sm font-semibold text-gray-900 mb-1">Monthly campaign performance report</div>
+              <div class="text-xs text-gray-500 mb-3">3 active campaigns</div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-gray-400 line-through">3 hours</span>
+                <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                <span class="text-xs font-semibold text-blue-600">35 minutes</span>
+              </div>
+            </div>
+            <div class="anim-item bg-gray-50 rounded-xl p-4 border border-gray-100">
+              <div class="text-xs text-gray-400 uppercase tracking-widest mb-2">Your 30-day plan</div>
+              <p class="text-sm text-gray-700 leading-relaxed">"Next campaign review - use this month's analysis framework instead of building the summary from scratch."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Presentation output -->
+        <div class="feature-row grid sm:grid-cols-2 gap-6 items-center">
+          <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
+            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Walk out with something ready to present</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Every briefing ends with a ready-to-present output - what you learned, what you applied, and what comes next. Something concrete to show at your next leadership conversation.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 flex flex-col gap-3 min-h-52 border border-gray-100 shadow-sm">
+            <div class="text-blue-600 text-xs font-bold uppercase tracking-widest mb-1">Slide preview</div>
+            <div class="anim-item bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden" style="border-left: 3px solid #3B82F6;">
+              <div class="px-4 pt-4 pb-3 border-b border-gray-100">
+                <div class="text-xs font-bold text-gray-900">Marketing AI &mdash; Month 3</div>
+              </div>
+              <div class="px-4 py-3 space-y-2.5">
+                <div>
+                  <div class="text-xs text-gray-400 mb-0.5">AI workflows active</div>
+                  <div class="text-xs font-semibold text-gray-800">2 &mdash; Campaign analysis &middot; Content brief generation</div>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400 mb-0.5">Peer benchmark</div>
+                  <div class="text-xs font-semibold text-blue-600">Top 28% of Marketing leaders</div>
+                  <div class="text-xs text-gray-400">India AI Benchmark, May 2026</div>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-400 mb-0.5">Next 30 days</div>
+                  <div class="text-xs font-semibold text-gray-800">Automate weekly performance summary</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="feature-row bg-white border border-et-red/20 rounded-lg p-6 flex flex-col sm:flex-row gap-6 items-start">
+        <div class="w-12 h-12 rounded-full bg-et-red flex items-center justify-center flex-shrink-0">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-base font-bold text-gray-900 mb-1">AI Transformation Scorecard - quarterly</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">After 3 months, your Scorecard begins tracking your AI history. After 3 quarters, your organisational AI record lives inside ET AI Edge - a compounding professional asset that stays with you, not a vendor.</p>
+          <div class="anim-item space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-gray-500 w-44 flex-shrink-0">Workflows deployed</span>
+              <div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 50%"></div></div>
+              <span class="text-xs text-gray-700 w-16 text-right flex-shrink-0">2 of 4</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-gray-500 w-44 flex-shrink-0">AI tools in use</span>
+              <div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 60%"></div></div>
+              <span class="text-xs text-gray-700 w-16 text-right flex-shrink-0">3 active</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-gray-500 w-44 flex-shrink-0">Leadership presentations</span>
+              <div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 100%"></div></div>
+              <span class="text-xs text-gray-700 w-16 text-right flex-shrink-0">2 this quarter</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-gray-500 w-44 flex-shrink-0">Peer benchmark</span>
+              <div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="bg-et-red h-1.5 rounded-full" style="width: 72%"></div></div>
+              <span class="text-xs text-gray-700 w-16 text-right flex-shrink-0">Top 28%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="#proof" class="inline-flex items-center gap-2 text-et-red font-semibold text-sm hover:underline">
+          See what this looks like in practice
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 4: ET EDITORIAL ADVANTAGE
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 4: ET Editorial Advantage</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Answers the first objection a senior visitor forms after Section 3: "Why ET - not McKinsey, not BCG, not Coursera?" The answer is access, not history. "ET reporters call the CFO directly" is a capability claim, not a brand heritage claim. The stat grid (200+ interviews, India-only benchmark) quantifies what that access produces.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether "access as capability" framing converts better than heritage framing ("80+ years"). Hypothesis: executives trust capability evidence, not legacy. Secondary test: whether the India AI Benchmark claim ("no equivalent dataset exists in India") accelerates scroll to pricing. Metric: Section 4→8 direct scroll rate - visitors who skip 5–6 to buy immediately.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Source trust. Establishes that ET's intelligence is primary-sourced, not aggregated from public reports. Max 60 words for the main argument - nobody reads a methodology explainer. The red background is intentional: this is the brand's most differentiated section; visual treatment signals it. No CTA here - pure credibility deposit before proof.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4 - ET EDITORIAL ADVANTAGE
+  ═══════════════════════════════════════════ -->
+  <section class="bg-et-red py-20 px-5 sm:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+    <div class="max-w-5xl mx-auto relative">
+      <div class="grid sm:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-white/70 text-xs uppercase tracking-widest font-semibold mb-4">The unfair advantage</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight mb-6">
+            Straight from India's business leaders.<br/>Not from a global report.
+          </h2>
+          <p class="text-white/80 text-base leading-relaxed mb-6">
+            The intelligence in ET AI Edge comes directly from Finance Directors, HR Heads, and Marketing VPs running AI deployments at Indian companies - not aggregated from international studies or recycled consulting decks.
+          </p>
+          <p class="text-white/80 text-base leading-relaxed">
+            That access becomes the India AI Benchmark - the only cross-function dataset tracking how Indian executives are deploying AI, at what cost, with what outcomes. <span class="text-white font-semibold">No equivalent dataset exists in India.</span>
+          </p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <!-- Event images -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-lg overflow-hidden border border-white/20">
+              <img src="assets/ai-awards.jpg" alt="ET AI Awards" class="w-full h-32 object-cover object-center" />
+              <div class="bg-white/10 px-3 py-2">
+                <div class="text-white text-xs font-semibold">ET AI Awards</div>
+                <div class="text-white/60 text-xs">India's only awards recognising AI-led business transformation</div>
+              </div>
+            </div>
+            <div class="rounded-lg overflow-hidden border border-white/20">
+              <img src="assets/alpha-wealth-summit.webp" alt="ET Alpha Wealth Summit" class="w-full h-32 object-cover object-center" />
+              <div class="bg-white/10 px-3 py-2">
+                <div class="text-white text-xs font-semibold">Alpha Wealth Summit</div>
+                <div class="text-white/60 text-xs">Where India's senior business leaders convene</div>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg overflow-hidden border border-white/20">
+            <img src="assets/knowledge-work-summit.webp" alt="ET Future of Knowledge Work Summit" class="w-full h-36 object-cover object-top" />
+            <div class="bg-white/10 px-3 py-2">
+              <div class="text-white text-xs font-semibold">Future of Knowledge Work Summit</div>
+              <div class="text-white/60 text-xs">ET's flagship event on the future of work and AI - ET AI Edge members get priority access</div>
+            </div>
+          </div>
+          <!-- Stat -->
+          <div class="bg-white/10 rounded-lg px-4 py-3 border border-white/20 flex items-center gap-4">
+            <div class="text-3xl font-bold text-white">200+</div>
+            <div class="text-white/70 text-sm">Indian CFOs, VPs, and leaders interviewed for the India AI Benchmark</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 5: PROOF
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 5: Proof - Named Practitioners</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">This is the conversion decision point for the senior segment. By Section 5 the visitor has experienced: recognition (Problem), novelty (Product), genuine surprise (Editorial access). Now they ask one question: "Do you know someone like me at a company I know?" Two cases are shown - a CFO/VP (Org Leader segment) and a Senior Manager (Career Accelerator segment) - so neither audience loses the thread.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether named Indian practitioners with function-specific metrics convert better than generic testimonials. Hypothesis: yes, by significant margin. Kill signal: Section 5 CTA CTR below 1% after 1,000 impressions → proof cases are not landing. Likely cause: company names not recognisable enough or metrics too vague. Placeholders must not ship - a paraphrased case will be detected and reduces trust more than no case.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Peer trust - the final trust layer. Institutional trust (Section 1), recognition trust (Section 2), specificity trust (Section 3), source trust (Section 4) have all been deposited. Peer trust is the conversion trigger: "someone like me did this, at a company I recognise." CTA after proof is belief-converted - visitor has moved from "this sounds interesting" to "this worked for someone in my situation."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5 - PROOF: NAMED PRACTITIONERS
+  ═══════════════════════════════════════════ -->
+  <section class="bg-white py-20 px-5 sm:px-8" id="proof">
+    <div class="max-w-5xl mx-auto">
+      <div class="section-divider mb-6"></div>
+      <p class="text-et-red text-xs uppercase tracking-widest font-semibold mb-3">What this looks like in practice</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Real people. Real companies. Real numbers.</h2>
+      <p class="text-gray-500 text-sm mb-12">Not a consulting report. Not an imported case study. Every metric comes from an actual operating environment.</p>
+
+      <div class="grid sm:grid-cols-2 gap-8 mb-10">
+        <div class="proof-card bg-gray-50 rounded-lg p-7">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="w-11 h-11 rounded-full bg-et-red flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold text-base">RS</span>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900 text-sm">Rohit Sharma</div>
+              <div class="text-gray-500 text-xs">CFO · Indian Manufacturing Company</div>
+              <div class="text-et-red text-xs font-medium mt-0.5">Finance AI Track · Month 7</div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 text-sm leading-relaxed mb-5">
+            "Our FP&A cycle ran 11 days. After three Monthly Briefing cycles, we've standardised two AI workflows that cut variance analysis to 4 days. The AI status slide I now present at every board review took 20 minutes to build - not 3 hours."
+          </blockquote>
+          <div class="grid grid-cols-3 gap-3 pt-5 border-t border-gray-200">
+            <div class="text-center">
+              <div class="text-et-red font-bold text-lg">11→4</div>
+              <div class="text-gray-400 text-xs">days, FP&A cycle</div>
+            </div>
+            <div class="text-center">
+              <div class="text-et-red font-bold text-lg">3×</div>
+              <div class="text-gray-400 text-xs">briefing cycles</div>
+            </div>
+            <div class="text-center">
+              <div class="text-et-red font-bold text-lg">20 min</div>
+              <div class="text-gray-400 text-xs">board slide build</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-card bg-gray-50 rounded-lg p-7">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="w-11 h-11 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+              <span class="text-gray-600 font-bold text-base">PM</span>
+            </div>
+            <div>
+              <div class="font-bold text-gray-900 text-sm">Priya Menon</div>
+              <div class="text-gray-500 text-xs">Senior Manager, FP&A · Indian FMCG Company</div>
+              <div class="text-et-red text-xs font-medium mt-0.5">Finance AI Track · Month 3</div>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 text-sm leading-relaxed mb-5">
+            "I've run the Monthly Briefing three times. The AI Transformation Scorecard gave me something specific to present at my annual review. My VP called it the most organised AI work she'd seen from any of her managers."
+          </blockquote>
+          <div class="grid grid-cols-2 gap-3 pt-5 border-t border-gray-200">
+            <div class="text-center">
+              <div class="text-et-red font-bold text-lg">3×</div>
+              <div class="text-gray-400 text-xs">monthly briefings completed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-et-red font-bold text-lg">Annual</div>
+              <div class="text-gray-400 text-xs">career differentiation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#pricing" class="inline-block bg-et-red text-white font-bold text-base px-8 py-4 rounded hover:bg-et-red-dark transition-colors">
+          Start My Monthly Briefing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 6: WHAT RUNS EACH MONTH
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 6: What Runs Each Month</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Anchors the full value stack before pricing is confirmed - makes ₹9,999 feel like a component, not a number. Three featured items (Weekly ET Intelligence Feed, Monthly AI Workflow, Monthly Practitioner Deep-Dive) are shown at full visibility; remaining deliverables are collapsed behind "See everything included →" so the section doesn't become a product brochure. Each item is framed as an operating output, not a learning module.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether feature-to-value translation (operational framing) increases dwell time on the pricing section. Metric: avg time on pricing section among users who scrolled Section 6 vs. those who skipped. Kill signal: Section 6 increases time-on-page without increasing Section 7 CTA clicks → cut to 3 bullets inside the pricing section and eliminate this section.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Delivery trust - "will they actually deliver?" Specificity of format answers this: weekly feed, monthly workflow, monthly deep-dive are different cadences, different formats, different jobs. The expandable section protects visual hierarchy on mobile while giving thorough visitors the full picture. Sets up pricing so that ₹9,999 feels like a bargain, not a question mark.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 6 - WHAT RUNS EACH MONTH
+  ═══════════════════════════════════════════ -->
+  <section class="bg-gray-50 py-20 px-5 sm:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="section-divider mb-6"></div>
+      <p class="text-et-red text-xs uppercase tracking-widest font-semibold mb-3">Your monthly structure</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">What happens in your monthly briefing.</h2>
+      <p class="text-gray-500 text-sm mb-12 max-w-xl">Not a course syllabus. A monthly operating structure - built around your existing management calendar.</p>
+
+      <div class="space-y-4 mb-12">
+        <div class="bg-white rounded-lg border border-gray-100 shadow-sm p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 rounded-full bg-et-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0">W</div>
+          <div>
+            <div class="font-semibold text-gray-900 text-sm mb-1">Weekly ET Intelligence Feed</div>
+            <div class="text-gray-500 text-sm leading-relaxed">Editorial-sourced, practitioner-verified. What Indian Finance, Marketing, HR, and Legal leaders are watching - from ET reporters who call them directly.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border border-gray-100 shadow-sm p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 rounded-full bg-et-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0">M</div>
+          <div>
+            <div class="font-semibold text-gray-900 text-sm mb-1">Monthly AI Workflow</div>
+            <div class="text-gray-500 text-sm leading-relaxed">An AI-assisted decision process for a task you do every month - tied to your actual work, not a generic exercise. Produces a decision or output you take into a real meeting.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg border border-gray-100 shadow-sm p-6 flex gap-5 items-start">
+          <div class="w-8 h-8 rounded-full bg-et-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0">M</div>
+          <div>
+            <div class="font-semibold text-gray-900 text-sm mb-1">Monthly Practitioner Deep-Dive</div>
+            <div class="text-gray-500 text-sm leading-relaxed">Named Indian operator - CFO or VP-equivalent minimum - on a real deployment. Real costs. Real failures. ET journalist sourced. Editorial report, not a live session.</div>
+          </div>
+        </div>
+        <details class="bg-white rounded-lg border border-gray-100 shadow-sm">
+          <summary class="p-6 flex gap-5 items-center cursor-pointer list-none">
+            <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-sm font-bold flex items-center justify-center flex-shrink-0">+</div>
+            <div class="font-semibold text-gray-900 text-sm">See everything included →</div>
+          </summary>
+          <div class="px-6 pb-6 pt-2 space-y-3 border-t border-gray-50">
+            <div class="flex gap-3 items-start text-sm text-gray-600">
+              <div class="w-1.5 h-1.5 rounded-full bg-et-red mt-2 flex-shrink-0"></div>
+              <div><strong class="text-gray-800">4 live masterclasses per year</strong> - one per track, named Indian practitioners only. Included in subscription.</div>
+            </div>
+            <div class="flex gap-3 items-start text-sm text-gray-600">
+              <div class="w-1.5 h-1.5 rounded-full bg-et-red mt-2 flex-shrink-0"></div>
+              <div><strong class="text-gray-800">Quarterly AI Tool Stack</strong> - what Indian teams are actually running. Ranked: evaluating / piloting / scaled.</div>
+            </div>
+            <div class="flex gap-3 items-start text-sm text-gray-600">
+              <div class="w-1.5 h-1.5 rounded-full bg-et-red mt-2 flex-shrink-0"></div>
+              <div><strong class="text-gray-800">AI Transformation Scorecard</strong> - quarterly self-assessment. After 3 quarters, your AI history lives inside ET AI Edge.</div>
+            </div>
+            <div class="flex gap-3 items-start text-sm text-gray-600">
+              <div class="w-1.5 h-1.5 rounded-full bg-et-red mt-2 flex-shrink-0"></div>
+              <div><strong class="text-gray-800">India AI Benchmark</strong> - peer comparison by role and team size. "34% of Indian Finance professionals at your level have AI in their forecasting workflow."</div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 7: PRICING
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 7: Pricing</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">This is the conclusion of a trust argument built over 6 sections. Every preceding section was a deposit - institutional, recognition, specificity, source, peer, delivery trust. The pricing section converts that trust into a purchase decision. Two tiers are shown: ET AI Edge (recommended, red border) and the ET Prime bundle. Annual billing rationale is explained - not just stated - so the single exit window feels like aligned incentives, not a lock-in.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether showing two tiers (₹9,999 standalone vs. ₹16,999 bundled with ET Prime) anchors the standalone as the rational default. Hypothesis: two tiers make ₹9,999 feel like the sensible middle choice. Primary metric: purchase CTA CTR. If CTR is below 3.5%, the upstream sections failed - pricing is the collection point, not the persuasion point. Do not edit the pricing section to fix a trust deficit in Sections 2–6.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Value trust - "can I justify this?" ₹9,999/year shown with ₹833/month equivalent gives executives a budget frame they think in. Annual billing logic stated plainly ("one exit window per year, not twelve") answers the implicit "why can't I do monthly?" objection before it forms. ET AI Circle appears only as a one-line footnote below the pricing cards - a decision fork at this point would interrupt purchase intent for a visitor already ready to buy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 7 - PRICING
+  ═══════════════════════════════════════════ -->
+  <section class="bg-white py-20 px-5 sm:px-8" id="pricing">
+    <div class="max-w-4xl mx-auto">
+      <div class="section-divider mb-6"></div>
+      <p class="text-et-red text-xs uppercase tracking-widest font-semibold mb-3">Pricing</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">One annual subscription. Everything included.</h2>
+      <p class="text-gray-500 text-sm mb-12">Annual billing only - one exit window per year, not twelve. The briefing cycle begins Month 1.</p>
+
+      <div class="grid sm:grid-cols-2 gap-6 mb-8">
+        <div class="border-2 border-et-red rounded-xl p-8 relative">
+          <div class="absolute -top-3 left-6 bg-et-red text-white text-xs font-bold px-3 py-1 rounded-full">Recommended</div>
+          <div class="mb-6">
+            <div class="text-xs text-gray-400 uppercase tracking-widest font-medium mb-1">ET AI Edge</div>
+            <div class="text-4xl font-bold text-gray-900">₹9,999<span class="text-lg font-normal text-gray-400">/yr</span></div>
+            <div class="text-gray-500 text-sm mt-1">₹833/month equivalent · annual billing</div>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-600 mb-8">
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Monthly AI Briefing</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ET editorial deep-dive, monthly</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>3-slide AI status output template</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>AI Transformation Scorecard (quarterly)</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>India AI Benchmark access</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-et-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>4 live masterclasses/year</li>
+          </ul>
+          <a href="#" class="block w-full bg-et-red text-white text-center font-bold py-3.5 rounded-lg hover:bg-et-red-dark transition-colors">
+            Join ET AI Edge - ₹9,999/year
+          </a>
+        </div>
+
+        <div class="border border-gray-200 rounded-xl p-8">
+          <div class="mb-6">
+            <div class="text-xs text-gray-400 uppercase tracking-widest font-medium mb-1">ET AI Edge + ET Prime</div>
+            <div class="text-4xl font-bold text-gray-900">₹16,999<span class="text-lg font-normal text-gray-400">/yr</span></div>
+            <div class="text-gray-500 text-sm mt-1">Best value · includes full ET Prime access</div>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-600 mb-8">
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Everything in ET AI Edge</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full ET Prime subscription</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Unlimited access to ET journalism</li>
+            <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Priority cohort access</li>
+          </ul>
+          <a href="#" class="block w-full border-2 border-gray-300 text-gray-700 text-center font-bold py-3.5 rounded-lg hover:border-et-red hover:text-et-red transition-colors">
+            Join with ET Prime - ₹16,999/year
+          </a>
+        </div>
+      </div>
+
+      <p class="text-center text-xs text-gray-400">
+        Senior leadership? <a href="#" class="text-et-red hover:underline font-medium">ET AI Circle</a> is a curated C-suite peer cohort at ₹29,999/year - for Directors and above.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOTATION - SECTION 8: FAQ + FINAL CTA
+  ══════════════════════════════════════════════════ -->
+  <div class="ann px-6 py-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="ann-label mb-2">Annotation - Section 8: FAQ + Final CTA</p>
+      <div class="ann-grid">
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-body">Objection removal for visitors who reached pricing but didn't convert. Three FAQ items answer the three objections that kill purchase intent for this audience: (1) "Is the deep-dive a live call?" - no, clarifies it's editorial; (2) "Is this a course / will I get a certificate?" - no, reframes credentials as organisational outputs; (3) "Can I cancel?" - yes, explains annual billing logic as subscriber-aligned, not extractive.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Whether specific FAQ answers directly lift final CTA conversion. Metric: most-clicked FAQ item (which objection is most common) and final CTA conversion rate among users who reached this section. Kill signal: no FAQ item clicked by more than 5% of users who reach this section → objections are not in these three questions; replace FAQ with single closing statement + one CTA.</div>
+        </div>
+        <div class="ann-cell">
+          <div class="ann-cell-label">Conversion intent</div>
+          <div class="ann-cell-body">Commitment trust - products confident in their value are transparent about policies. Lowest-copy section on the page. One number. One CTA. No distractions. The closing statement above the CTA reintroduces the genuine urgency signal (Scorecard baseline starts Month 1) without manufactured pressure. Final CTA copy is minimal: "Join ET AI Edge" - no price repeat, no elaboration. The page has already made the case.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 8 - FINAL CTA + FAQ
+  ═══════════════════════════════════════════ -->
+  <section class="bg-gray-50 py-20 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="section-divider mb-6"></div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Common questions</h2>
+      <div class="space-y-3 mb-16">
+
+        <details class="faq-item bg-white border border-gray-100 rounded-lg shadow-sm">
+          <summary class="p-5 flex justify-between items-center gap-4">
+            <span class="font-semibold text-gray-900 text-sm">Is the practitioner deep-dive a live call with the featured executive?</span>
+            <span class="faq-icon text-et-red font-bold text-xl flex-shrink-0">+</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-4">
+            No. The practitioner deep-dive is editorial content - an ET journalist-authored report featuring a named Indian business leader. You get the intelligence from ET's direct source access. You do not get a 1:1 session with the executive. If you want direct peer access to C-suite practitioners, that is ET AI Circle.
+          </div>
+        </details>
+
+        <details class="faq-item bg-white border border-gray-100 rounded-lg shadow-sm">
+          <summary class="p-5 flex justify-between items-center gap-4">
+            <span class="font-semibold text-gray-900 text-sm">Is ET AI Edge a course? Will I get a certificate?</span>
+            <span class="faq-icon text-et-red font-bold text-xl flex-shrink-0">+</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-4">
+            ET AI Edge does not issue certificates. It produces organisational outputs - your AI Transformation Scorecard, your team-facing 3-slide AI status presentations. Those are your credentials. "I completed a course" is a different signal than "I run my team at the AI frontier."
+          </div>
+        </details>
+
+        <details class="faq-item bg-white border border-gray-100 rounded-lg shadow-sm">
+          <summary class="p-5 flex justify-between items-center gap-4">
+            <span class="font-semibold text-gray-900 text-sm">Can I cancel? What is the billing policy?</span>
+            <span class="faq-icon text-et-red font-bold text-xl flex-shrink-0">+</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-4">
+            Annual billing only. You are billed once at the start of your subscription year. You can cancel before your renewal date and will not be charged again. The annual structure is intentional - monthly billing creates twelve exit windows per year before the briefing becomes a management habit. Annual creates one.
+          </div>
+        </details>
+
+      </div>
+
+      <div class="bg-white border border-gray-100 rounded-xl p-8 text-center shadow-sm">
+        <p class="text-gray-500 text-sm mb-3">Your AI Scorecard baseline starts Month 1</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Start your Monthly AI Briefing.</h2>
+        <p class="text-gray-500 text-sm mb-8">The next cycle opens June 2026. Joining mid-cycle means your Scorecard starts behind peers who joined at cycle open.</p>
+        <a href="#" class="inline-block bg-et-red text-white font-bold text-base px-10 py-4 rounded-lg hover:bg-et-red-dark transition-colors mb-4">
+          Join ET AI Edge - ₹9,999/year
+        </a>
+        <p class="text-gray-400 text-xs">Annual billing · Cancel before renewal · Not a course</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="bg-white border-t border-gray-100 py-10 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-et-red font-bold text-xl tracking-tight font-serif">ET</span>
+        <div class="w-px h-5 bg-gray-200"></div>
+        <span class="text-gray-600 text-sm">AI Edge</span>
+        <div class="w-px h-5 bg-gray-200"></div>
+        <span class="text-gray-400 text-xs">A product of The Economic Times</span>
+      </div>
+      <div class="flex gap-5 text-xs text-gray-400">
+        <a href="#" class="hover:text-et-red transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-et-red transition-colors">Terms of Use</a>
+        <a href="#" class="hover:text-et-red transition-colors">Contact</a>
+      </div>
+      <p class="text-gray-400 text-xs">© 2026 Bennett Coleman & Co. Ltd.</p>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('v') === 'b') {
+      document.getElementById('hero-a').classList.add('hidden');
+      document.getElementById('hero-b').classList.remove('hidden');
+      document.getElementById('hero-cta-a').classList.add('hidden');
+      document.getElementById('hero-cta-b').classList.remove('hidden');
+    }
+    // Scroll-triggered animations for feature rows
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.feature-row').forEach(row => observer.observe(row));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
