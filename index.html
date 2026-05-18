@@ -142,16 +142,16 @@
       <p class="ann-label mb-2">Annotation - Top Bar &amp; Navigation</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Top bar delivers the single most important urgency signal: the review cycle has a fixed start date. Nav persists on scroll - every section gets a buy CTA in the thumb zone without interrupting reading.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">Top bar creates genuine urgency (cycle has a real start date). Sticky nav puts a purchase CTA in the thumb zone at every scroll position without interrupting reading.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether cycle-timing urgency ("your Scorecard baseline starts Month 1") generates earlier CTA clicks vs. no top-bar urgency. Tracked by: nav CTA click-share before vs. after scroll depth 50%.</div>
+          <div class="ann-cell-body">Whether cycle-timing urgency drives earlier CTA clicks. Metric: nav CTA click-share among visitors at &lt;50% scroll depth.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Recovery mechanism - captures visitors who've decided but haven't scrolled to pricing yet. "Join - ₹9,999/yr" in nav is not a new offer; it's a shortcut for the already-convinced visitor.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Nav CTA clicked by &lt;0.5% of visitors → top bar is not pulling forward; remove and rely on in-section CTAs only.</div>
         </div>
       </div>
     </div>
@@ -186,46 +186,27 @@
   ══════════════════════════════════════════════════ -->
   <div class="ann px-6 py-5">
     <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-3">Annotation - Section 1: Hero (Above the Fold) · Most Critical Panel</p>
-
-      <!-- Extended annotation for hero -->
+      <p class="ann-label mb-3">Annotation - Section 1: Hero · Most Critical Panel</p>
       <div class="mb-4">
-        <p class="ann-heading mb-1">What this panel must do in 3 seconds</p>
-        <p class="ann-body max-w-3xl">Filter out the wrong visitor and arrest the right one. Variant A headline ("Lead AI at work. Before someone else does.") frames the competitive urgency — this is about being first, not being informed. Variant B headline ("You're ahead on AI. Your leadership hasn't noticed.") names the visibility gap for Career Accelerators — doing the work but not getting credit. Both subheadlines make the product concrete: what it is, who the intelligence comes from (ET's Global Business Summit and AI Awards leaders), and what you walk away with. Price appears immediately so the visitor self-selects before investing attention in the rest of the page.</p>
+        <p class="ann-heading mb-1">Four jobs above the fold</p>
+        <p class="ann-body max-w-3xl"><strong>Promise:</strong> Headline states the competitive outcome in 7 words — no product category, no AI cliché. <strong>Credibility:</strong> Subheadline grounds intelligence in ET's access to India's top executives. <strong>Price:</strong> ₹9,999/year shown immediately — signals confidence, filters low-intent visitors, anchors the rest of the page. ₹833/month gives executives the budget frame they think in. <strong>CTA:</strong> Variant-specific — Org Leaders get "Take the Lead," Career Accelerators get "Start My Monthly Briefing."</p>
       </div>
-
-      <div class="ann-grid mb-4">
+      <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
+          <div class="ann-cell-label">A/B variants — day 1 test</div>
           <div class="ann-cell-body">
-            <strong>Variant A headline:</strong> "Lead AI at work. Before someone else does." — competitive urgency without naming a competitor. Targets Org Leaders (38–55) who fear losing the AI narrative in their team.<br/><br/>
-            <strong>Variant B headline:</strong> "You're ahead on AI. Your leadership hasn't noticed." — visibility gap framing. Targets Career Accelerators (28–38) who are doing real AI work but not being seen for it.<br/><br/>
-            <strong>Variant A subheadline:</strong> Names the intelligence source ("ET's Global Business Summit and AI Awards leaders") to establish access credibility, then describes the output (action plan + ready-to-present output).<br/><br/>
-            <strong>Variant B subheadline:</strong> Focuses on the visibility outcome ("so your AI work is visible, not just real") — purchase trigger is recognition, not learning.<br/><br/>
-            <strong>Price:</strong> ₹9,999/year shown above fold. Signals confidence, filters low-intent visitors, anchors the rest of the page. Per-month equivalent (₹833) gives executives a budget frame they think in.
+            <strong>A (default):</strong> "Lead AI at work. Before someone else does." + "Take the Lead." Competitive urgency. Targets Org Leaders (38–55) — fear of losing the AI narrative in their team.<br/><br/>
+            <strong>B (?v=b):</strong> "You're ahead on AI. Your leadership hasn't noticed." + "Start My Monthly Briefing." Visibility gap. Targets Career Accelerators (28–38) — doing real AI work, not being seen for it.
           </div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's testing (A/B)</div>
-          <div class="ann-cell-body">
-            <strong>Variant A (default):</strong> Headline "Lead AI at work. Before someone else does." + CTA "Own My Organisation's AI Direction." Hypothesis: competitive + control framing converts Org Leaders (38–55) better. Predicts +12–18% CTR on that segment.<br/><br/>
-            <strong>Variant B (?v=b):</strong> Headline "You're ahead on AI. Your leadership hasn't noticed." + CTA "Start My Monthly Briefing." Hypothesis: visibility gap framing converts Career Accelerators (28–38) better. Predicts +15–20% CTR on that segment.<br/><br/>
-            <strong>Primary metric:</strong> Hero CTA CTR. Kill threshold: &lt;2.5% after 2,000 unique mobile sessions.<br/><br/>
-            <strong>Secondary metric:</strong> Scroll depth Hero→Section 2. If scroll rate is high but CTA CTR is low, copy is interesting but not converting - problem is in the CTA, not the headline.
-          </div>
+          <div class="ann-cell-label">What it's testing</div>
+          <div class="ann-cell-body">Competitive urgency framing (A) vs. visibility gap framing (B). Primary metric: hero CTA CTR. Kill threshold: &lt;2.5% after 2,000 unique mobile sessions. If scroll depth is high but CTR is low — problem is the CTA, not the headline.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">
-            <strong>Primary:</strong> First purchase opportunity - a fast-moving visitor who reads headline + price + trust row and buys without scrolling further. This visitor exists; the page must not block them.<br/><br/>
-            <strong>Secondary:</strong> Scroll commitment - visitor who needs more before purchasing but is now invested enough to continue. The hero earns this by being specific (20 minutes, 3-slide output) rather than vague ("AI-powered insights").<br/><br/>
-            <strong>Intentionally excluded:</strong> Feature list (explains, doesn't lead), testimonials (institutional trust signals only at this stage), social proof numbers (Year-1, small numbers reduce trust), urgency countdown (destroys trust with this audience).
-          </div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Not deletable — the hero is the page. If both variants fail the kill threshold, rewrite the headline before changing any other section. Intentionally excluded: feature list, testimonials, social proof numbers (Year-1), urgency countdown.</div>
         </div>
-      </div>
-
-      <div class="border-t border-yellow-200 pt-3 mt-2">
-        <p class="ann-body"><strong>Design note - imagery:</strong> Hero photo shows professionals in an executive meeting context - not a "person at laptop with AI interface" stock cliché. The dark gradient overlay keeps text readable while the image does emotional work: this is the room these people want to lead.</p>
       </div>
     </div>
   </div>
@@ -272,28 +253,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════
-       ANNOTATION - SECTION 2: THE PROBLEM
-  ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 2: The Problem</p>
-      <div class="ann-grid">
-        <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Names the precise situation the visitor is living - ChatGPT workshops, scattered pilots, no one accountable - without labelling it as their failure. Ends with a reframe: this is a structural gap, not a personal one. Creates recognition without defensiveness. No CTA here - the section must earn trust, not sell.</div>
-        </div>
-        <div class="ann-cell">
-          <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether naming the gap concretely (pilot chaos → no ownership) produces stronger scroll pull than a general "AI is changing everything" framing. Metric: Section 2→3 scroll-through rate. Drop-off above 45% means the problem framing is too familiar or too broad - rewrite with more operational specificity.</div>
-        </div>
-        <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Build recognition trust. A product that can describe your problem accurately is one that understands your world. This section does not try to convert - it earns the right for Section 3 to introduce the product. Max 5 lines on mobile: must end without resolution so discomfort carries the visitor forward.</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 <!-- ══════════════════════════════════════════════════
@@ -301,19 +260,19 @@
   ══════════════════════════════════════════════════ -->
   <div class="ann px-6 py-4">
     <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 3: What ET AI Edge Is</p>
+      <p class="ann-label mb-2">Annotation - Section 3: The Product</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Makes the product concrete through three animated examples - a real deployment (VP Finance, FMCG, board prep from 3 days to 4 hours), a workflow scenario (campaign performance report, 3 hours to 35 minutes, 30-day commitment), and a populated slide preview (Marketing AI Month 3, peer benchmark, next action). The Scorecard callout below introduces the compounding switching cost via progress bars - after 3 quarters, the visitor's AI history lives here and nowhere else.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">Makes the product concrete before the visitor meets pricing. Three animated examples show what a briefing actually produces: a real deployment (VP Finance, board prep 3 days → 4 hours), a workflow with a 30-day commitment, and a populated slide preview. Scorecard callout introduces the compounding switching cost — after 3 quarters, their AI history lives only here.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether explaining the ritual (3 outputs, 20 minutes) increases or decreases conversion. Hypothesis: specificity converts. Kill signal: Section 3→5 scroll-through drops while time-on-section rises - visitor is reading but not buying. Means the description is satisfying curiosity without creating purchase intent → restructure around the output, not the process.</div>
+          <div class="ann-cell-body">Whether specific output examples (deployment card, slide preview) build purchase intent faster than feature descriptions. Kill signal: scroll-through to Section 5 drops while time-on-section rises — visitor is reading but not buying. Fix: restructure around outputs, not process.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Specificity trust. A product that describes a 3-slide template, a 20-minute structure, a quarterly Scorecard - was designed by someone who has been in those meetings. Micro-CTA here does a different job: "See what this looks like in practice" is a scroll deepener, not a purchase push. Moves committed visitors to Section 5 (proof) faster.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Section 3→5 scroll-through below 50% after 1,000 sessions. Indicates the product explanation is satisfying curiosity without creating urgency — collapse to 3 bullets inside the pricing card instead.</div>
         </div>
       </div>
     </div>
@@ -479,19 +438,19 @@
   ══════════════════════════════════════════════════ -->
   <div class="ann px-6 py-4">
     <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 4: ET Editorial Advantage</p>
+      <p class="ann-label mb-2">Annotation - Section 4: ET's Unfair Advantage</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Answers the first objection a senior visitor forms after Section 3: "Why ET - not McKinsey, not BCG, not Coursera?" The answer is access, not history. "ET reporters call the CFO directly" is a capability claim, not a brand heritage claim. The stat grid (200+ interviews, India-only benchmark) quantifies what that access produces.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">Answers the objection forming after Section 3: "Why ET — not McKinsey, not Coursera?" Answer is access, not heritage. Events (Global Business Summit, AI Awards, Knowledge Work Summit) prove ET convenes these leaders — not just covers them. 200+ interviews and the India AI Benchmark quantify what that access produces. Red background signals this is the differentiation section.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether "access as capability" framing converts better than heritage framing ("80+ years"). Hypothesis: executives trust capability evidence, not legacy. Secondary test: whether the India AI Benchmark claim ("no equivalent dataset exists in India") accelerates scroll to pricing. Metric: Section 4→8 direct scroll rate - visitors who skip 5–6 to buy immediately.</div>
+          <div class="ann-cell-body">Whether access framing ("ET reporters call the CFO") converts better than brand heritage ("80+ years"). Trust signal hierarchy: ET events → primary dataset → no equivalent exists. Metric: Section 4→pricing direct scroll rate among visitors who skip proof.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Source trust. Establishes that ET's intelligence is primary-sourced, not aggregated from public reports. Max 60 words for the main argument - nobody reads a methodology explainer. The red background is intentional: this is the brand's most differentiated section; visual treatment signals it. No CTA here - pure credibility deposit before proof.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Never delete — this is ET's only non-replicable asset on the page. Restructure if visitors spend &gt;90 seconds here without scrolling to proof — means it reads as a methodology explainer, not a trust signal.</div>
         </div>
       </div>
     </div>
@@ -556,19 +515,19 @@
   ══════════════════════════════════════════════════ -->
   <div class="ann px-6 py-4">
     <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 5: Proof - Named Practitioners</p>
+      <p class="ann-label mb-2">Annotation - Section 5: Proof</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">This is the conversion decision point for the senior segment. By Section 5 the visitor has experienced: recognition (Problem), novelty (Product), genuine surprise (Editorial access). Now they ask one question: "Do you know someone like me at a company I know?" Two cases are shown - a CFO/VP (Org Leader segment) and a Senior Manager (Career Accelerator segment) - so neither audience loses the thread.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">The conversion decision point. By now the visitor has institutional trust (ET brand), specificity trust (product), and source trust (editorial access). The final question is peer trust: "Do you know someone like me at a company I recognise?" Two cases cover both segments — CFO/VP for Org Leaders, Senior Manager for Career Accelerators.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether named Indian practitioners with function-specific metrics convert better than generic testimonials. Hypothesis: yes, by significant margin. Kill signal: Section 5 CTA CTR below 1% after 1,000 impressions → proof cases are not landing. Likely cause: company names not recognisable enough or metrics too vague. Placeholders must not ship - a paraphrased case will be detected and reduces trust more than no case.</div>
+          <div class="ann-cell-body">Whether named practitioners with specific metrics (11→4 days, 20 min slide) outperform generic testimonials. They will — but company name recognition is the variable. Placeholders must not ship; a paraphrased case reduces trust more than no case at all.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Peer trust - the final trust layer. Institutional trust (Section 1), recognition trust (Section 2), specificity trust (Section 3), source trust (Section 4) have all been deposited. Peer trust is the conversion trigger: "someone like me did this, at a company I recognise." CTA after proof is belief-converted - visitor has moved from "this sounds interesting" to "this worked for someone in my situation."</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Section 5 CTA CTR below 1% after 1,000 impressions. Cause is almost certainly unrecognisable company names or metrics that feel fabricated. Fix proof cases before deleting the section.</div>
         </div>
       </div>
     </div>
@@ -655,19 +614,19 @@
   ══════════════════════════════════════════════════ -->
   <div class="ann px-6 py-4">
     <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 6: What Runs Each Month</p>
+      <p class="ann-label mb-2">Annotation - Section 6: Value Stack</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Anchors the full value stack before pricing is confirmed - makes ₹9,999 feel like a component, not a number. Three featured items (Weekly ET Intelligence Feed, Monthly AI Workflow, Monthly Practitioner Deep-Dive) are shown at full visibility; remaining deliverables are collapsed behind "See everything included →" so the section doesn't become a product brochure. Each item is framed as an operating output, not a learning module.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">Anchors the value stack before pricing — makes ₹9,999 feel like a component, not a number. Three items shown at full visibility; rest collapsed behind "See everything →" to protect mobile hierarchy. Each item framed as an operating output, not a learning module — "not a course syllabus" stated explicitly.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether feature-to-value translation (operational framing) increases dwell time on the pricing section. Metric: avg time on pricing section among users who scrolled Section 6 vs. those who skipped. Kill signal: Section 6 increases time-on-page without increasing Section 7 CTA clicks → cut to 3 bullets inside the pricing section and eliminate this section.</div>
+          <div class="ann-cell-body">Whether operational framing (outputs, not features) increases dwell time on the pricing section. Metric: avg time on pricing section among visitors who scrolled Section 6 vs. those who skipped it.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Delivery trust - "will they actually deliver?" Specificity of format answers this: weekly feed, monthly workflow, monthly deep-dive are different cadences, different formats, different jobs. The expandable section protects visual hierarchy on mobile while giving thorough visitors the full picture. Sets up pricing so that ₹9,999 feels like a bargain, not a question mark.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Section 6 increases time-on-page without increasing pricing CTA clicks → cut to 3 bullets inside the pricing card and remove this section entirely.</div>
         </div>
       </div>
     </div>
@@ -741,16 +700,16 @@
       <p class="ann-label mb-2">Annotation - Section 7: Pricing</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">This is the conclusion of a trust argument built over 6 sections. Every preceding section was a deposit - institutional, recognition, specificity, source, peer, delivery trust. The pricing section converts that trust into a purchase decision. Two tiers are shown: ET AI Edge (recommended, red border) and the ET Prime bundle. Annual billing rationale is explained - not just stated - so the single exit window feels like aligned incentives, not a lock-in.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">The conclusion of a trust argument built over 6 sections — not the persuasion point. Two tiers anchor ₹9,999 as the rational default (vs. ₹16,999 with ET Prime). ₹833/month equivalent gives executives the budget frame they think in. ET AI Circle is a footnote only — a decision fork at this moment would interrupt a visitor already ready to buy.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether showing two tiers (₹9,999 standalone vs. ₹16,999 bundled with ET Prime) anchors the standalone as the rational default. Hypothesis: two tiers make ₹9,999 feel like the sensible middle choice. Primary metric: purchase CTA CTR. If CTR is below 3.5%, the upstream sections failed - pricing is the collection point, not the persuasion point. Do not edit the pricing section to fix a trust deficit in Sections 2–6.</div>
+          <div class="ann-cell-body">Whether two-tier anchoring lifts standalone conversion vs. showing one tier only. Primary metric: purchase CTA CTR. If CTR is below 3.5%, the upstream sections failed. Do not edit pricing to fix a trust problem in Sections 3–6.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Value trust - "can I justify this?" ₹9,999/year shown with ₹833/month equivalent gives executives a budget frame they think in. Annual billing logic stated plainly ("one exit window per year, not twelve") answers the implicit "why can't I do monthly?" objection before it forms. ET AI Circle appears only as a one-line footnote below the pricing cards - a decision fork at this point would interrupt purchase intent for a visitor already ready to buy.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">Not deletable. If CTR is low, diagnose Section 4 (source trust) or Section 5 (proof) first — pricing collects trust built elsewhere, it does not create it.</div>
         </div>
       </div>
     </div>
@@ -819,16 +778,16 @@
       <p class="ann-label mb-2">Annotation - Section 8: FAQ + Final CTA</p>
       <div class="ann-grid">
         <div class="ann-cell">
-          <div class="ann-cell-label">What it's doing</div>
-          <div class="ann-cell-body">Objection removal for visitors who reached pricing but didn't convert. Three FAQ items answer the three objections that kill purchase intent for this audience: (1) "Is the deep-dive a live call?" - no, clarifies it's editorial; (2) "Is this a course / will I get a certificate?" - no, reframes credentials as organisational outputs; (3) "Can I cancel?" - yes, explains annual billing logic as subscriber-aligned, not extractive.</div>
+          <div class="ann-cell-label">Why it's here</div>
+          <div class="ann-cell-body">Objection removal for visitors who reached pricing but didn't convert. Three FAQs address the three objections that kill purchase intent for this audience: (1) is the deep-dive a live call? (2) is this a course / will I get a certificate? (3) can I cancel? Transparent answers signal a product confident in its value.</div>
         </div>
         <div class="ann-cell">
           <div class="ann-cell-label">What it's testing</div>
-          <div class="ann-cell-body">Whether specific FAQ answers directly lift final CTA conversion. Metric: most-clicked FAQ item (which objection is most common) and final CTA conversion rate among users who reached this section. Kill signal: no FAQ item clicked by more than 5% of users who reach this section → objections are not in these three questions; replace FAQ with single closing statement + one CTA.</div>
+          <div class="ann-cell-body">Which objection is most common. Metric: most-clicked FAQ item. The most-clicked item names the section of the page that failed to pre-empt it — fix that section, not the FAQ.</div>
         </div>
         <div class="ann-cell">
-          <div class="ann-cell-label">Conversion intent</div>
-          <div class="ann-cell-body">Commitment trust - products confident in their value are transparent about policies. Lowest-copy section on the page. One number. One CTA. No distractions. The closing statement above the CTA reintroduces the genuine urgency signal (Scorecard baseline starts Month 1) without manufactured pressure. Final CTA copy is minimal: "Join ET AI Edge" - no price repeat, no elaboration. The page has already made the case.</div>
+          <div class="ann-cell-label">Delete condition</div>
+          <div class="ann-cell-body">No FAQ item clicked by &gt;5% of visitors who reach this section → these are not the real objections. Replace with a single closing statement + one CTA.</div>
         </div>
       </div>
     </div>
