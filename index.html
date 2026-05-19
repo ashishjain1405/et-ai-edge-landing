@@ -94,6 +94,12 @@
       color: #92400E;
       line-height: 1.55;
     }
+    /* Annotation collapse */
+    .ann-details summary { cursor: pointer; list-style: none; }
+    .ann-details summary::-webkit-details-marker { display: none; }
+    .ann-details[open] summary .ann-toggle-icon { transform: rotate(45deg); }
+    .ann-toggle-icon { transition: transform 0.2s ease; display: inline-block; }
+
     /* Print / hide annotations toggle */
     .ann-toggle-btn {
       position: fixed;
@@ -118,13 +124,10 @@
       transform: translateY(12px);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
-    .feature-row.visible .anim-item {
+    .anim-item.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .feature-row.visible .anim-item:nth-child(2) { transition-delay: 0.12s; }
-    .feature-row.visible .anim-item:nth-child(3) { transition-delay: 0.24s; }
-    .feature-row.visible .anim-item:nth-child(4) { transition-delay: 0.36s; }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased">
@@ -137,9 +140,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - TOP BAR + NAV
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Top Bar &amp; Navigation</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Top Bar &amp; Navigation</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -155,7 +161,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ─── TOP BAR ─── -->
   <div class="bg-et-red text-white text-xs py-1.5 text-center tracking-wide font-medium">
@@ -184,9 +190,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 1: HERO (ABOVE THE FOLD)
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-5">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-3">Annotation - Section 1: Hero · Most Critical Panel</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 1: Hero · Most Critical Panel</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="mb-4">
         <p class="ann-heading mb-1">Four jobs above the fold</p>
         <p class="ann-body max-w-3xl"><strong>Promise:</strong> Headline states the competitive outcome in 7 words — no product category, no AI cliché. <strong>Credibility:</strong> Subheadline grounds intelligence in ET's access to India's top executives. <strong>Price:</strong> ₹9,999/year shown immediately — signals confidence, filters low-intent visitors, anchors the rest of the page. ₹833/month gives executives the budget frame they think in. <strong>CTA:</strong> Variant-specific — Org Leaders get "Take the Lead," Career Accelerators get "Start My Monthly Briefing."</p>
@@ -209,7 +218,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 1 - HERO
@@ -258,9 +267,12 @@
 <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 3: WHAT ET AI EDGE IS
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 3: The Product</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 3: The Product</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -276,7 +288,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 3 - WHAT ET AI EDGE IS
@@ -436,9 +448,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 4: ET EDITORIAL ADVANTAGE
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 4: ET's Unfair Advantage</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 4: ET's Unfair Advantage</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -454,7 +469,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 4 - ET EDITORIAL ADVANTAGE
@@ -513,9 +528,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 5: PROOF
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 5: Proof</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 5: Proof</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -531,7 +549,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 5 - PROOF: NAMED PRACTITIONERS
@@ -612,9 +630,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 6: WHAT RUNS EACH MONTH
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 6: Value Stack</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 6: Value Stack</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -630,7 +651,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 6 - WHAT RUNS EACH MONTH
@@ -695,9 +716,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 7: PRICING
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 7: Pricing</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 7: Pricing</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -713,7 +737,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 7 - PRICING
@@ -773,9 +797,12 @@
   <!-- ══════════════════════════════════════════════════
        ANNOTATION - SECTION 8: FAQ + FINAL CTA
   ══════════════════════════════════════════════════ -->
-  <div class="ann px-6 py-4">
-    <div class="max-w-6xl mx-auto">
-      <p class="ann-label mb-2">Annotation - Section 8: FAQ + Final CTA</p>
+  <details class="ann ann-details px-6 py-3">
+    <summary class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="ann-label">Annotation - Section 8: FAQ + Final CTA</p>
+      <span class="ann-toggle-icon text-yellow-600 font-bold text-lg leading-none">+</span>
+    </summary>
+    <div class="max-w-6xl mx-auto pt-3">
       <div class="ann-grid">
         <div class="ann-cell">
           <div class="ann-cell-label">Why it's here</div>
@@ -791,7 +818,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════
        SECTION 8 - FINAL CTA + FAQ
@@ -875,7 +902,7 @@
       document.getElementById('hero-cta-a').classList.add('hidden');
       document.getElementById('hero-cta-b').classList.remove('hidden');
     }
-    // Scroll-triggered animations for feature rows
+    // Scroll-triggered animations — observe each anim-item directly
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -883,8 +910,8 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.feature-row').forEach(row => observer.observe(row));
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.anim-item').forEach(item => observer.observe(item));
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
